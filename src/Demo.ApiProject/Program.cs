@@ -18,6 +18,8 @@ builder.Services.AddScoped<IEmissionsService, EmissionsService>();
 
 builder.Services.AddProblemDetails();
 builder.Services.AddExceptionHandler<ValidationExceptionHandler>();
+builder.Services.AddExceptionHandler<NotAuthorizedExceptionHandler>();
+builder.Services.AddExceptionHandler<DataAccessExceptionHandler>();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 
 var app = builder.Build();
