@@ -9,3 +9,5 @@
 /src/Demo.Domain/obj
 /src/Demo.Infrastructure.FuelEconomyService/bin/Debug/net10.0
 /src/Demo.Infrastructure.FuelEconomyService/obj
+/src/Demo.Infrastructure.AuthorizationService/bin/Debug/net10.0
+/src/Demo.Infrastructure.AuthorizationService/obj

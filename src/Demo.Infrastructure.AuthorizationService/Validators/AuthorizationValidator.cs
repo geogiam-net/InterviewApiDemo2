@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Demo.Domain.Validators;
+namespace Demo.Infrastructure.AuthorizationService.Validators;
 
 // We could return the error messages in the user language with an injected service. For simplicity, the error messages are in English.
 public static class AuthorizationValidator

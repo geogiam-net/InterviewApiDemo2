@@ -1,0 +1,37 @@
+@HostAddress = http://localhost:5180
+
+### Ok Authorization
+
+POST {{HostAddress}}/api/authorize
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "Quijote@Mancha.com"
+}
+
+### Test authorizing an invalid formatted email
+
+POST {{HostAddress}}/api/authorize
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "Quijote-Mancha.com"
+}
+
+### Test authorizing banned disposable email
+
+POST {{HostAddress}}/api/authorize
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "Quijote@mailinator.com"
+}
+
+### Test authorizing missing email
+
+POST {{HostAddress}}/api/authorize
+Content-Type: application/json
+Accept: application/json

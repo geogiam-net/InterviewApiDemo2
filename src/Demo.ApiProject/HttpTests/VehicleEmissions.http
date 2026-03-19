@@ -1,0 +1,36 @@
+@HostAddress = http://localhost:5180
+@Token = f2bc7494-a3c4-4b6d-9d00-4c4fd9187838
+
+### Ok request, dont forget to get a fresh token from authorize endpoint
+
+GET {{HostAddress}}/api/vehicle/emissions/31873
+Content-Type: application/json
+Accept: application/json
+Token: {{Token}}
+
+### Ok request
+
+GET {{HostAddress}}/api/vehicle/emissions/26425
+Content-Type: application/json
+Accept: application/json
+Token: {{Token}}
+
+### Test getting not existent vehicle
+
+GET {{HostAddress}}/api/vehicle/emissions/999999
+Content-Type: application/json
+Accept: application/json
+Token: {{Token}}
+
+### Test wrong token
+
+GET {{HostAddress}}/api/vehicle/emissions/999999
+Content-Type: application/json
+Accept: application/json
+Token: qwerty
+
+### Test no token
+
+GET {{HostAddress}}/api/vehicle/emissions/999999
+Content-Type: application/json
+Accept: application/json

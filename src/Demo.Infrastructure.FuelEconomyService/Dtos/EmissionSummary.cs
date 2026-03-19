@@ -14,7 +14,7 @@ public class EmissionSummary
     // field VClass
     public string Vclass { get; init; } = string.Empty;
 
-    // field Year
+    // field year
     public int YearOfManufacture { get; init; } = default;
 
     // field city08, mile per gallon

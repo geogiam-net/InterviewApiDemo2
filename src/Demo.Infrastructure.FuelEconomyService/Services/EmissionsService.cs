@@ -12,12 +12,13 @@ public class EmissionsService : IEmissionsService
 
     public async Task<EmissionSummary?> GetVehicleEmission(int vehicleId)
     {
+        // TODO comment on HttpClient
+
         string url = $"{SourceUrl}{vehicleId}";
         using HttpClientHandler handler = new HttpClientHandler { UseCookies = false };
         using HttpClient client = new HttpClient(handler) { BaseAddress = new Uri(url) };
 
         var response = await client.GetAsync(url);
-        response.EnsureSuccessStatusCode();
 
         if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
         {
@@ -33,18 +34,41 @@ public class EmissionsService : IEmissionsService
         var xmlDoc = new XmlDocument();
         xmlDoc.LoadXml(xmlContent);
 
-        // TODO read the xml and map to EmissionSummary
+        XmlNode? brandNode = xmlDoc.SelectSingleNode("//make");
+        string brand = brandNode?.InnerText ?? string.Empty;
+
+        XmlNode? modelNode = xmlDoc.SelectSingleNode("//model");
+        string model = modelNode?.InnerText ?? string.Empty;
+
+        XmlNode? vClassNode = xmlDoc.SelectSingleNode("//VClass");
+        string vClass = vClassNode?.InnerText ?? string.Empty;
+
+        XmlNode? yearNode = xmlDoc.SelectSingleNode("//year");
+        int.TryParse(yearNode?.InnerText, out int year);
+
+        XmlNode? cityNode = xmlDoc.SelectSingleNode("//city08");
+        decimal.TryParse(cityNode?.InnerText, out decimal city);
+
+        XmlNode? highwayNode = xmlDoc.SelectSingleNode("//highway08");
+        decimal.TryParse(highwayNode?.InnerText, out decimal highway);
+
+        XmlNode? combinedNode = xmlDoc.SelectSingleNode("//comb08");
+        decimal.TryParse(combinedNode?.InnerText, out decimal combined);
+
+        XmlNode? co2Node = xmlDoc.SelectSingleNode("//co2");
+        decimal.TryParse(co2Node?.InnerText, out decimal co2);
+
         var summary = new EmissionSummary()
         {
-            Id = 0,
-            Brand = string.Empty,
-            Model = string.Empty,
-            Vclass = string.Empty,
-            YearOfManufacture = 0,
-            FuelConsumptionCity = 0M,
-            FuelConsumptionHighway = 0M,
-            FuelConsumptionCombined = 0M,
-            Co2Emissions = 0M,
+            Id = vehicleId,
+            Brand = brand,
+            Model = model,
+            Vclass = vClass,
+            YearOfManufacture = year,
+            FuelConsumptionCity = city,
+            FuelConsumptionHighway = highway,
+            FuelConsumptionCombined = combined,
+            Co2Emissions = co2,
         };
 
         return summary;

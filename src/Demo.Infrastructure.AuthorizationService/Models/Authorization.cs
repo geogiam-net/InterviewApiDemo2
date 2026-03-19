@@ -1,4 +1,4 @@
-﻿namespace Demo.Domain.Models;
+﻿namespace Demo.Infrastructure.AuthorizationService.Models;
 
 public class Authorization
 {

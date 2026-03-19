@@ -1,7 +1,9 @@
 using Demo.Api.Endpoints;
 using Demo.Api.Exceptions;
-using Demo.Domain.Interfaces;
+using Demo.Infrastructure.AuthorizationService.Interfaces;
+using Demo.Infrastructure.AuthorizationService.Services;
 using Demo.Infrastructure.FuelEconomyService.Interfaces;
+using Demo.Infrastructure.FuelEconomyService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,8 +13,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSingleton(TimeProvider.System);
 
-builder.Services.AddScoped<IAuthService>();
-builder.Services.AddScoped<IEmissionsService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IEmissionsService, EmissionsService>();
 
 builder.Services.AddProblemDetails();
 builder.Services.AddExceptionHandler<DomainExceptionHandler>();

@@ -1,8 +1,8 @@
 using Demo.Domain.Exceptions;
-using Demo.Domain.Models;
-using Demo.Domain.Validators;
+using Demo.Infrastructure.AuthorizationService.Models;
+using Demo.Infrastructure.AuthorizationService.Validators;
 
-namespace Demo.Domain.Services;
+namespace Demo.Infrastructure.AuthorizationService.Services;
 
 public class AuthService(TimeProvider timeProvider) : Interfaces.IAuthService
 {
@@ -39,10 +39,12 @@ public class AuthService(TimeProvider timeProvider) : Interfaces.IAuthService
             Expiration = Authorization.GenerateExpirationDate(timeProvider.GetUtcNow().Date)
         };
 
-        return null;
+        Authorizations.Add(newAuth);
+
+        return newAuth;
     }
 
-    public bool ValidateAuthorization(string token)
+    public bool ValidateToken(string token)
     {
         var auth = Authorizations.FirstOrDefault(a => a.Token == token);
         if (auth is null) {
@@ -52,6 +54,7 @@ public class AuthService(TimeProvider timeProvider) : Interfaces.IAuthService
         var expirationError = AuthorizationValidator.ValidateExpiration(auth.Expiration, timeProvider.GetUtcNow().Date);
         if (!String.IsNullOrEmpty(expirationError))
         {
+            Authorizations.Remove(auth);
             throw new DomainException(expirationError);
         }
 
