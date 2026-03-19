@@ -1,0 +1,72 @@
+
+# Coding Challenge: Vehicle Emission API
+
+Your task is to implement a small backend service that processes vehicle emission data and secures access.
+
+## 1. Auth & Validation
+Create an endpoint that accepts an **email address**.
+* The address must be formally valid.
+* Disposable email addresses (e.g., Mailinator, etc.) are not allowed.
+* Upon successful verification, access to the emissions endpoint should be authorized.
+
+## 2. Vehicle Data (Protected)
+Create an endpoint that provides details about vehicle emissions.
+* **Auth Requirement:** Access to this endpoint must only be possible after successful validation (step 1).
+* Use the [FuelEconomy.gov Web Services API](https://www.fueleconomy.gov/feg/ws/) for the data.
+* The **vehicle ID** is passed as a path parameter (e.g., `/vehicle/45013`).
+* The response should return the most important data summarized:
+- Make (`make`)
+- Model (`model`)
+- Year of manufacture (`year`)
+- Fuel consumption city/highway/combined (`city08`, `highway08`, `comb08` in MPG)
+- CO₂ emissions (`co2` in g/mile)
+- Vehicle class (`VClass`)
+
+**Tip:** You can find vehicle IDs via the menu endpoints:
+
+1. `/ws/rest/vehicle/menu/year` → List of model years
+2. `/ws/rest/vehicle/menu/make?year=2024` → Manufacturers for one year
+3. `/ws/rest/vehicle/menu/model?year=2024&make=Toyota` → Models
+4. `/ws/rest/vehicle/menu/options?year=2024&make=Toyota&model=Camry` → Variants with IDs
+
+## Notes
+
+* **Technology:** Language and framework are freely selectable.
+* **API Key:** The API is **free and does not require an API key**.
+* **Goal:** A working solution that demonstrates your approach to validation, security, and API integration.
+
+===========================================================================
+
+# Coding Challenge: Vehicle Emission API
+
+Deine Aufgabe ist es, einen kleinen Backend-Service zu implementieren, der Fahrzeug-Emissionsdaten aufbereitet und den Zugriff absichert.
+
+## 1. Auth & Validierung
+Erstelle einen Endpunkt, der eine **E-Mail-Adresse** entgegennimmt.
+* Die Adresse muss formal gültig sein.
+* Es dürfen keine **Wegwerf-E-Mail-Adressen** (z. B. Mailinator etc.) erlaubt sein.
+* Bei erfolgreicher Prüfung soll der Zugriff für den Emissions-Endpunkt autorisiert werden.
+
+## 2. Fahrzeug-Daten (Geschützt)
+Erstelle einen Endpunkt, der Details zu Fahrzeug-Emissionen liefert.
+* **Auth-Pflicht:** Der Zugriff auf diesen Endpunkt darf nur möglich sein, wenn zuvor die Validierung (Schritt 1) erfolgreich durchlaufen wurde.
+* Nutze für die Daten die [FuelEconomy.gov Web Services API](https://www.fueleconomy.gov/feg/ws/).
+* Die **Fahrzeug-ID** wird als Pfad-Parameter übergeben (z. B. `/vehicle/45013`).
+* Die Antwort soll die wichtigsten Daten zusammengefasst zurückgeben:
+  - Marke (`make`)
+  - Modell (`model`)
+  - Baujahr (`year`)
+  - Verbrauch Stadt/Highway/Kombiniert (`city08`, `highway08`, `comb08` in MPG)
+  - CO₂-Emissionen (`co2` in g/Meile)
+  - Fahrzeugklasse (`VClass`)
+
+**Tipp:** Über die Menu-Endpunkte kannst du Fahrzeug-IDs ermitteln:
+1. `/ws/rest/vehicle/menu/year` → Liste der Modelljahre
+2. `/ws/rest/vehicle/menu/make?year=2024` → Hersteller für ein Jahr
+3. `/ws/rest/vehicle/menu/model?year=2024&make=Toyota` → Modelle
+4. `/ws/rest/vehicle/menu/options?year=2024&make=Toyota&model=Camry` → Varianten mit IDs
+
+## Hinweise
+* **Technologie:** Sprache und Framework sind frei wählbar.
+* **API-Key:** Die API ist **kostenlos und erfordert keinen API-Key**.
+* **Ziel:** Eine lauffähige Lösung, die deine Herangehensweise an Validierung, Sicherheit und API-Integration zeigt.
