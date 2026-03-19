@@ -15,7 +15,7 @@ public class AuthService(TimeProvider timeProvider) : Interfaces.IAuthService
         var emailError = AuthorizationValidator.ValidateEmail(email);
         if (!String.IsNullOrEmpty(emailError))
         {
-            throw new DomainException(emailError);
+            throw new ValidationException(emailError);
         }
 
         var previousAuth = Authorizations.FirstOrDefault(a => a.Email == email);
@@ -55,7 +55,7 @@ public class AuthService(TimeProvider timeProvider) : Interfaces.IAuthService
         if (!String.IsNullOrEmpty(expirationError))
         {
             Authorizations.Remove(auth);
-            throw new DomainException(expirationError);
+            throw new NotAuthorizedException(expirationError);
         }
 
         return true;

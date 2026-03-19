@@ -1,15 +1,15 @@
 ﻿namespace Demo.Domain.Exceptions
 {
-    public class DomainException : Exception
+    public class ValidationException : Exception
     {
         public readonly string[] Errors;
 
-        public DomainException(string error)
+        public ValidationException(string error)
         {
             Errors = [error];
         }
 
-        public DomainException(string[] errors)
+        public ValidationException(string[] errors)
         {
             Errors = errors;
         }

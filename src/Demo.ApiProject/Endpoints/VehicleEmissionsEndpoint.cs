@@ -7,7 +7,7 @@ internal static class VehicleEmissionsEndpoint
 {
     internal static void MapVehicleEmissionsEndpoint(this IEndpointRouteBuilder builder)
     {
-        builder.MapGet("/api/vehicle/emissions/{vehicleId}",
+        builder.MapGet("/api/vehicle/{vehicleId}/emissions",
             async Task<IResult> (int vehicleId, IEmissionsService emissionsService, IAuthService authService, HttpRequest request) =>
           {
               if (!request.Headers.TryGetValue("token", out var tokenValues))
