@@ -10,6 +10,7 @@ public class EmissionsService : IEmissionsService
 {
     private const string SourceUrl = "https://www.fueleconomy.gov/ws/rest/vehicle/";
 
+    // querying external sources could be cached in production in memory or Reddis server
     public async Task<EmissionSummary?> GetVehicleEmission(int vehicleId)
     {
         // For this demo, using the HttpClient in this way is enough, but in production it must not be like this.

@@ -22,9 +22,6 @@ public class EmissionResponse
 
     public decimal Co2Emissions { get; init; } = default;
 
-
-    public EmissionResponse() { }
-
     public EmissionResponse(EmissionSummary emissionSummary) { 
         Id = emissionSummary.Id;
         Brand = emissionSummary.Brand;

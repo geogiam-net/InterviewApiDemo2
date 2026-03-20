@@ -15,12 +15,12 @@ internal static class AuthenticationEndpoint
         builder.MapPost("/api/auth", 
             IResult (AuthenticationRequest authRequest, IAuthService authService) =>
           {
-              var authorization = authService.Authenticate(authRequest.Email);
-              if (authorization is null) {
+              var auth = authService.Authenticate(authRequest.Email);
+              if (auth is null) {
                   return TypedResults.Unauthorized();
               }
 
-              return TypedResults.Ok(authorization);
+              return TypedResults.Ok(new AuthenticationResponse(auth));
           });
     }
 }
