@@ -1,3 +1,4 @@
+using Demo.Api;
 using Demo.Api.Endpoints;
 using Demo.Api.Exceptions;
 using Demo.Infrastructure.AuthorizationService.Interfaces;
@@ -21,6 +22,8 @@ builder.Services.AddExceptionHandler<ValidationExceptionHandler>();
 builder.Services.AddExceptionHandler<NotAuthorizedExceptionHandler>();
 builder.Services.AddExceptionHandler<DataAccessExceptionHandler>();
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+
+builder.Services.AddBasicAuthentication();
 
 var app = builder.Build();
 
