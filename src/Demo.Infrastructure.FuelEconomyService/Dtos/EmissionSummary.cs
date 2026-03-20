@@ -1,31 +1,38 @@
-﻿namespace Demo.Infrastructure.FuelEconomyService.Dtos;
+﻿using System.Xml.Serialization;
 
+namespace Demo.Infrastructure.FuelEconomyService.Dtos;
+
+[XmlRoot(ElementName = "vehicle")]
 public class EmissionSummary
 {
-    // field id
+    [XmlElement(ElementName = "id")]
     public int Id { get; init; } = default;
 
-    // field make
+    [XmlElement(ElementName = "make")]
     public string Brand { get; init; } = string.Empty;
 
-    // field model
+    [XmlElement(ElementName = "model")]
     public string Model { get; init; } = string.Empty;
 
-    // field VClass
+    [XmlElement(ElementName = "VClass")]
     public string Vclass { get; init; } = string.Empty;
 
-    // field year
+    [XmlElement(ElementName = "year")]
     public int YearOfManufacture { get; init; } = default;
 
-    // field city08, mile per gallon
+    // mile per gallon
+    [XmlElement(ElementName = "city08")]
     public decimal FuelConsumptionCity { get; init; } = default;
 
-    // field highway08, mile per gallon
+    // mile per gallon
+    [XmlElement(ElementName = "highway08")]
     public decimal FuelConsumptionHighway { get; init; } = default;
 
-    // field comb08, mile per gallon
+    // mile per gallon
+    [XmlElement(ElementName = "comb08")]
     public decimal FuelConsumptionCombined { get; init; } = default;
 
-    // field co2, gramm per mile
+    // gramm per mile
+    [XmlElement(ElementName = "co2")]
     public decimal Co2Emissions { get; init; } = default;
 }

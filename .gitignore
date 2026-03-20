@@ -11,3 +11,5 @@
 /src/Demo.Infrastructure.FuelEconomyService/obj
 /src/Demo.Infrastructure.AuthorizationService/bin/Debug/net10.0
 /src/Demo.Infrastructure.AuthorizationService/obj
+/src/Demo.Infrastructure.AuthenticationService/bin/Debug/net10.0
+/src/Demo.Infrastructure.AuthenticationService/obj

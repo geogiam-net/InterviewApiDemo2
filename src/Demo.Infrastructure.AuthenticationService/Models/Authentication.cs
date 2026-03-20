@@ -1,6 +1,6 @@
 ﻿namespace Demo.Infrastructure.AuthorizationService.Models;
 
-public class Authorization
+public class Authentication
 {
     public string Email { get; set; } = string.Empty;
 

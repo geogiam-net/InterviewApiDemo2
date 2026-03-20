@@ -45,7 +45,7 @@ if (app.Environment.IsDevelopment())
 app.UseStatusCodePages();
 app.UseExceptionHandler();
 
-app.MapAuthorizationEndpoint();
+app.MapAutheticateEndpoint();
 app.MapVehicleEmissionsEndpoint();
 
 // not needed for this demo, but in production you should use https and authorization

@@ -1,5 +1,5 @@
 @HostAddress = http://localhost:5180
-@Token = 00b58062-bd2b-41de-892e-24370b524a20
+@Token = c47a1b11-1080-4be9-874e-cc7b98960bea
 
 ### Ok request, dont forget to get a fresh token from authorize endpoint
 

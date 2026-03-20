@@ -1,17 +1,16 @@
-﻿namespace Demo.Domain.Exceptions
+﻿namespace Demo.Domain.Exceptions;
+
+public class DataAccessException : Exception
 {
-    public class DataAccessException : Exception
+    public readonly string[] Errors;
+
+    public DataAccessException(string error)
     {
-        public readonly string[] Errors;
+        Errors = [error];
+    }
 
-        public DataAccessException(string error)
-        {
-            Errors = [error];
-        }
-
-        public DataAccessException(string[] errors)
-        {
-            Errors = errors;
-        }
+    public DataAccessException(string[] errors)
+    {
+        Errors = errors;
     }
 }

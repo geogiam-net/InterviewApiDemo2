@@ -2,7 +2,7 @@
 
 public interface IAuthService
 {
-    public Models.Authorization Authorize(string email);
+    public Models.Authentication Authenticate(string email);
 
     public bool ValidateToken(string token);
 }

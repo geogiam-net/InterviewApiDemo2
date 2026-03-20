@@ -1,3 +1,4 @@
+using Demo.Api.Dtos;
 using Demo.Infrastructure.AuthorizationService.Interfaces;
 using Demo.Infrastructure.FuelEconomyService.Interfaces;
 
@@ -28,7 +29,7 @@ internal static class VehicleEmissionsEndpoint
                   return TypedResults.NotFound();
               }
 
-              return TypedResults.Ok(summary);
+              return TypedResults.Ok(new EmissionResponse(summary));
           });
     }
 }

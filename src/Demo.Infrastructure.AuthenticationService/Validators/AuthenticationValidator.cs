@@ -3,7 +3,7 @@
 namespace Demo.Infrastructure.AuthorizationService.Validators;
 
 // We could return the error messages in the user language with an injected service. For simplicity, the error messages are in English.
-public static class AuthorizationValidator
+public static class AuthenticationValidator
 {
     // this can be fetched from https://github.com/disposable/disposable-email-domains, stored in a file and we read it once and cache it in memory. For simplicity, I am hardcoding a few disposable email domains here. It would be injected as a service into the Domain.
     public static readonly List<string> DisposableEmailDomainList = new List<string> { "@mailinator.com" };

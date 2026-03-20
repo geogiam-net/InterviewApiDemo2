@@ -1,6 +1,6 @@
 <Solution>
   <Project Path="src/Demo.ApiProject/Demo.Api.csproj" />
   <Project Path="src/Demo.Domain/Demo.Domain.csproj" />
-  <Project Path="src/Demo.Infrastructure.AuthorizationService/Demo.Infrastructure.AuthorizationService.csproj" />
+  <Project Path="src/Demo.Infrastructure.AuthenticationService/Demo.Infrastructure.AuthenticationService.csproj" />
   <Project Path="src/Demo.Infrastructure.FuelEconomyService/Demo.Infrastructure.FuelEconomyService.csproj" />
 </Solution>

@@ -2,7 +2,7 @@
 
 ### Ok Authorization
 
-POST {{HostAddress}}/api/authorize
+POST {{HostAddress}}/api/auth
 Content-Type: application/json
 Accept: application/json
 
@@ -12,7 +12,7 @@ Accept: application/json
 
 ### Test authorizing an invalid formatted email
 
-POST {{HostAddress}}/api/authorize
+POST {{HostAddress}}/api/auth
 Content-Type: application/json
 Accept: application/json
 
@@ -22,7 +22,7 @@ Accept: application/json
 
 ### Test authorizing banned disposable email
 
-POST {{HostAddress}}/api/authorize
+POST {{HostAddress}}/api/auth
 Content-Type: application/json
 Accept: application/json
 
@@ -32,6 +32,6 @@ Accept: application/json
 
 ### Test authorizing missing email
 
-POST {{HostAddress}}/api/authorize
+POST {{HostAddress}}/api/auth
 Content-Type: application/json
 Accept: application/json

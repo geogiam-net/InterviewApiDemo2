@@ -8,11 +8,11 @@ public class AuthService(TimeProvider timeProvider) : Interfaces.IAuthService
 {
     // These in a real application would be stored in a database and not in memory. I am using an in-memory list for simplicity.
     // It would be injected as a service into the Domain.
-    private static readonly List<Authorization> Authorizations = new List<Authorization>();
+    private static readonly List<Authentication> Authorizations = new List<Authentication>();
 
-    public Authorization? Authorize(string email) {
+    public Authentication Authenticate(string email) {
 
-        var emailError = AuthorizationValidator.ValidateEmail(email);
+        var emailError = AuthenticationValidator.ValidateEmail(email);
         if (!String.IsNullOrEmpty(emailError))
         {
             throw new ValidationException(emailError);
@@ -22,7 +22,7 @@ public class AuthService(TimeProvider timeProvider) : Interfaces.IAuthService
         if (previousAuth is not null)
         {
             // if previous authorization is not expired, return it. If it is expired, remove it and create a new one below.
-            var expirationError = AuthorizationValidator.ValidateExpiration(previousAuth.Expiration, timeProvider.GetUtcNow().Date);
+            var expirationError = AuthenticationValidator.ValidateExpiration(previousAuth.Expiration, timeProvider.GetUtcNow().Date);
             if (String.IsNullOrEmpty(expirationError))
             {
                 return previousAuth;
@@ -32,11 +32,11 @@ public class AuthService(TimeProvider timeProvider) : Interfaces.IAuthService
             }
         }
 
-        var newAuth = new Authorization
+        var newAuth = new Authentication
         {
             Email = email,
             Token = Guid.NewGuid().ToString(),
-            Expiration = Authorization.GenerateExpirationDate(timeProvider.GetUtcNow().Date)
+            Expiration = Authentication.GenerateExpirationDate(timeProvider.GetUtcNow().Date)
         };
 
         Authorizations.Add(newAuth);
@@ -51,7 +51,7 @@ public class AuthService(TimeProvider timeProvider) : Interfaces.IAuthService
             return false;
         }
 
-        var expirationError = AuthorizationValidator.ValidateExpiration(auth.Expiration, timeProvider.GetUtcNow().Date);
+        var expirationError = AuthenticationValidator.ValidateExpiration(auth.Expiration, timeProvider.GetUtcNow().Date);
         if (!String.IsNullOrEmpty(expirationError))
         {
             Authorizations.Remove(auth);
