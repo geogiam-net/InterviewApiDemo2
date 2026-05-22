@@ -1,5 +1,5 @@
 using System.Xml.Serialization;
-using Demo.Domain.Exceptions;
+using Demo.Business.Exceptions;
 using Demo.Infrastructure.FuelEconomyService.Dtos;
 using Demo.Infrastructure.FuelEconomyService.Interfaces;
 

@@ -1,4 +1,4 @@
-using Demo.Domain.Exceptions;
+using Demo.Business.Exceptions;
 using Demo.Infrastructure.AuthorizationService.Models;
 using Demo.Infrastructure.AuthorizationService.Validators;
 

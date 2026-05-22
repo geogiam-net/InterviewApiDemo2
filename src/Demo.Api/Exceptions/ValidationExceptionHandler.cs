@@ -1,32 +1,32 @@
-﻿using Demo.Domain.Exceptions;
+﻿using Demo.Business.Exceptions;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.Api.Exceptions;
 
 // https://www.milanjovanovic.tech/blog/global-error-handling-in-aspnetcore-from-middleware-to-modern-handlers
-internal sealed class NotAuthorizedExceptionHandler(IProblemDetailsService problemDetailsService) : IExceptionHandler
+internal sealed class ValidationExceptionHandler(IProblemDetailsService problemDetailsService) : IExceptionHandler
 {
     public async ValueTask<bool> TryHandleAsync(
         HttpContext httpContext,
         Exception exception,
         CancellationToken cancellationToken)
     {
-        if (exception is not NotAuthorizedException)
+        if (exception is not ValidationException)
         {
             return false;
         }
 
-        httpContext.Response.StatusCode = StatusCodes.Status401Unauthorized;
+        httpContext.Response.StatusCode = StatusCodes.Status400BadRequest;
         var context = new ProblemDetailsContext
         {
             HttpContext = httpContext,
             Exception = exception,
             ProblemDetails = new ProblemDetails
             {
-                Detail = "Not authorized to access the resource",
-                Status = StatusCodes.Status401Unauthorized,
-                Type = "https://datatracker.ietf.org/doc/html/rfc7235#section-3.1"
+                Detail = "One or more validation errors occurred",
+                Status = StatusCodes.Status400BadRequest,
+                Type = "https://datatracker.ietf.org/doc/html/rfc7231#section-6.5.1"
             }
         };
 
