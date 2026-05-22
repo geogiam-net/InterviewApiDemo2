@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authentication;
 
-namespace Demo.Api;
+namespace Demo.Api.Startup;
 
-public static class ConfigureServices
+public static class ConfigureAuthentication
 {
     extension(IServiceCollection services)
     {
